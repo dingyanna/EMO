@@ -1,0 +1,38 @@
+inherit: 
+    - base_nn.yaml
+    - models/minimal.yaml
+
+wandb:
+    project: multilayer
+    entity:  
+    log_every_steps: 1000
+    name: vanilla
+    notes: 
+
+model:
+    n_dims: 10
+    hidden_layer_size: 4 
+    n_in_intermediate: 2
+    n_out_intermediate: 2
+    knot1: 1
+    knot2: 2
+    opt_algo: vanilla
+
+training:
+    task_kwargs: 
+        ## IMPORTANT ##
+        hidden_layer_size: 4
+        n_layers: 3
+    curriculum:
+        points:
+            start: 26
+            end: 101
+            inc: 5
+            interval: 2000
+        dims:
+            start: 10
+            end: 10
+            inc: 1
+            interval: 2000
+        epsilon: 10
+out_dir: ../models/cot_2nn

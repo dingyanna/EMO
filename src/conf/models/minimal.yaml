@@ -1,0 +1,4 @@
+model:
+    n_embd: 128
+    n_layer: 3
+    n_head: 4
